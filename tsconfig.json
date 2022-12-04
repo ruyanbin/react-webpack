@@ -23,5 +23,5 @@
       ]
     }
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "src/App.jsx", "src/index.jsx"]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "src/App.jsx", "src/index.jsx","images.d.ts"]
 }
