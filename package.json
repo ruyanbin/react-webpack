@@ -22,6 +22,7 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.4",
     "redux": "^4.2.0",
+    "runtime": "^0.14.1",
     "scheduler": "^0.23.0",
     "speed-measure-webpack-plugin": "^1.5.0",
     "webpack": "^5.75.0",

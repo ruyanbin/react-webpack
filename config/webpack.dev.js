@@ -2,7 +2,7 @@
  * @Author: yanbinru 18303671156@163.com
  * @Date: 2022-12-02 22:38:50
  * @LastEditors: yanbinru 18303671156@163.com
- * @LastEditTime: 2022-12-04 15:15:30
+ * @LastEditTime: 2022-12-04 21:53:54
  * @FilePath: /webpack/build/webpack.dev.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -16,6 +16,9 @@ const webpack = require("webpack")
 const is=true
 const config= merge(common, {
     mode: 'development', // 开发模式,打包更加快速,省了代码优化步骤
+    // cache: {
+    //     type: 'filesystem', // 使用文件缓存
+    //   },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new ReactRefreshWebpackPlugin(),

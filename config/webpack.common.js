@@ -2,13 +2,12 @@
  * @Author: yanbinru 18303671156@163.com
  * @Date: 2022-12-02 22:38:41
  * @LastEditors: yanbinru 18303671156@163.com
- * @LastEditTime: 2022-12-04 19:09:44
+ * @LastEditTime: 2022-12-04 22:11:18
  * @FilePath: /webpack/build/webpack.base.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 const path = require('path')
 const paths = require('./paths');
-const { resolveApp } = require('./paths');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')//编译进度条；
@@ -39,6 +38,7 @@ module.exports = {
         alias: {//配置别名，简化模块引入
             "@": paths.appSrc,
         },
+
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.d.ts'],//在引入模块时可不带后缀；
         symlinks: false,//用于配置 npm link 是否生效，禁用可提升编译速度。
     },
@@ -71,6 +71,8 @@ module.exports = {
             },
             {
                 test: /.(ts|tsx)$/, // 匹配.ts, tsx文件
+                exclude: /node_modules/,
+                include:paths.appSrc,
                 use: {
                     loader: 'babel-loader',
                     options: {
@@ -85,7 +87,8 @@ module.exports = {
             // 图片
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
-
+                include: path.resolve(__dirname, "../src"),
+                exclude: /node_modules/, // 排除node_modules中的代码
                 type: 'asset',
                 parser: {
                     dataUrlCondition: {
@@ -97,9 +100,7 @@ module.exports = {
             // 字体
             {
                 test: /.(woff|woff2|eot|ttf|otf)$/i,
-                include: [
-                    paths.appSrc,
-                ],
+                include:paths.appSrc,
                 type: 'asset/resource',
             },
             {
@@ -134,5 +135,7 @@ module.exports = {
             chunkFilename: "static/css/[name].[contenthash:5].css",
         }),//
 
-    ]
+    ],
+
+
 }
